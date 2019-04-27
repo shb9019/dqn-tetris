@@ -3,7 +3,7 @@ import os
 import torch
 import time
 from game import Engine
-from dqn_agent import DQN, ReplayMemory, Transition
+from dqn import DQN, ReplayMemory, Transition
 from torch.autograd import Variable
 
 FloatTensor = torch.FloatTensor

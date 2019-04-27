@@ -72,7 +72,7 @@ class DQN(nn.Module):
         x = F.relu(self.lin1(x.view(x.size(0), -1)))
         return self.head(x.view(x.size(0), -1))
 
-BATCH_SIZE = 1024
+BATCH_SIZE = 2048
 GAMMA = 0.999
 EPS_START = 0.9
 EPS_END = 0.05
@@ -86,8 +86,8 @@ model = DQN()
 print(model)
 
 loss = nn.MSELoss()
-optimizer = optim.RMSprop(model.parameters(), lr=.001)
-memory = ReplayMemory(3000)
+optimizer = optim.RMSprop(model.parameters())
+memory = ReplayMemory(8000)
 
 
 def select_action(state):
