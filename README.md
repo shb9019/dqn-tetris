@@ -12,6 +12,6 @@ Python Version: 3.6+
 
 ## Instructions to Run
 
-Training the model - `python dqn_agent.py`
+Training the model - `python dqn.py`
 
-Running trained model - `python run_model.py model_best.pth.tar`
+Running trained model - `python run.py model_best.pth.tar`
