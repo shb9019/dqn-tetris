@@ -26,7 +26,14 @@ ByteTensor = torch.ByteTensor
 Transition = namedtuple('Transition',
                         ('state', 'action', 'next_state', 'reward'))
 
-
+"""
+Replay Memory
+    Transition - a named tuple representing a single transition in
+        our environment
+    ReplayMemory - a cyclic buffer of bounded size that holds the
+        transitions observed recently. It also implements a ``.sample()``
+        method for selecting a random batch of transitions for training.
+"""
 class ReplayMemory(object):
 
     def __init__(self, capacity):
@@ -84,6 +91,14 @@ memory = ReplayMemory(3000)
 
 
 def select_action(state):
+    """
+        Will select an action accordingly to an epsilon
+        greedy policy. Simply put, we'll sometimes use our model for choosing
+        the action, and sometimes we'll just sample one uniformly. The
+        probability of choosing a random action will start at ``EPS_START``
+        and will decay exponentially towards ``EPS_END``. ``EPS_DECAY``
+        controls the rate of the decay.
+    """
     global steps_done
     sample = random.random()
     eps_threshold = EPS_END + (EPS_START - EPS_END) * \

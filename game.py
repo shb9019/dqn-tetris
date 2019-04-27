@@ -1,5 +1,3 @@
-#from __future__ import print_function
-
 import numpy as np
 import random
 
@@ -130,7 +128,6 @@ class Engine:
         valid_action_sum = 0
 
         for value, fn in self.vam.items():
-            # If they're equal, it is not a valid action
             if fn(self.shape, self.anchor, self.board) != (self.shape, self.anchor):
                 valid_action_sum += 1
 
