@@ -145,14 +145,14 @@ class Engine:
 
         done = False
         if self._has_dropped():
-            reward += 10 * self.anchor[1]
+            reward += 10 * (self.anchor[1])
             self._set_piece(True)
-            reward += 100 * self._clear_lines()
+            reward = 100 * self._clear_lines()
             if np.any(self.board[:, 0]):
                 self.clear()
                 self.n_deaths += 1
                 done = True
-                reward = -1000
+                reward = -500
             else:
                 self._new_piece()
 
